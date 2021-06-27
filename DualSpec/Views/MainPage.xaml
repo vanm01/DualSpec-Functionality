@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DualSpec.Views"
+    x:Class="DualSpec.Views.MainPage">
+
+    <TableView>
+
+        <TableRoot>
+
+            <TableSection>
+
+                <TextCell Text="Camera Page"
+                          Detail="Take images using main camera on cellphone"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:CameraPage}"/>
+
+                <TextCell Text="Spectra Isolation Page"
+                          Detail="Allows for the isolation of spectra using touch inputs"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:SpecIsolationPage}"/>
+
+
+            </TableSection>
+
+        </TableRoot>
+
+    </TableView>
+
+</ContentPage>
