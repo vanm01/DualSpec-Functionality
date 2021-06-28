@@ -38,5 +38,8 @@
 	<string>Access images</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Access and capture images</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+<string>SkiaSharp Forms Demos adds images to your photo library</string>
+
 </dict>
 </plist>
