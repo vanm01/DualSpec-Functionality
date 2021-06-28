@@ -9,7 +9,7 @@ namespace DualSpec.Views
 {
     public partial class SavePhotoPage : ContentPage, IModelPage
     {
-        SKPixmap savePixmap;
+        SKImage saveImage;
 
         public SavePhotoPage()
         {
@@ -17,9 +17,11 @@ namespace DualSpec.Views
         }
 
         public SavePhotoPage(SKImage image)
-            : this()
         {
-            savePixmap = image.SKImageToPixmap();
+            InitializeComponent();
+
+            saveImage = image;
+
         }
 
         public async Task Dismiss()
@@ -29,47 +31,50 @@ namespace DualSpec.Views
 
         async void OnSaveButtonClicked(System.Object sender, System.EventArgs e)
         {
-            SKEncodedImageFormat imageFormat = (SKEncodedImageFormat)formatPicker.SelectedItem;
-            int quality = (int)qualitySlider.Value;
-
-            if(savePixmap==null)
-            {
-                Console.WriteLine("********************************Pixmap is null********************************");
-            }
+            //SKEncodedImageFormat imageFormat = (SKEncodedImageFormat)formatPicker.SelectedItem;
+            //int quality = (int)qualitySlider.Value;
 
             using (MemoryStream memStream = new MemoryStream())
+
+            using (SKManagedWStream wstream = new SKManagedWStream(memStream))
             {
-                using (SKManagedWStream wstream = new SKManagedWStream(memStream))
+
+                byte[] saveData = saveImage.Encode(SKEncodedImageFormat.Jpeg, 100).ToArray();
+
+                if (saveData == null)
                 {
+                    statusLabel.Text = "Encode returned null";
+                }
+                else if (saveData.Length == 0)
+                {
+                    statusLabel.Text = "Encode returned empty array";
+                }
+                else
+                {
+                    bool success = await DependencyService.Get<IPhotoPickerService>().
+                        SavePhotoAsync(saveData, folderNameEntry.Text, fileNameEntry.Text);
 
-                    if(savePixmap != null)
+                    if (!success)
                     {
-                        bool result = savePixmap.Encode(wstream, imageFormat, quality);
-                        byte[] data = memStream.ToArray();
-
-                        if (data == null || data.Length == 0)
-                            statusLabel.Text = "Encode failed";
-                        else
-                        {
-                            bool success = await DependencyService.Get<IPhotoPickerService>().SavePhotoAsync(data, folderNameEntry.Text, fileNameEntry.Text);
-
-                            if (!success)
-                                statusLabel.Text = "Save failed";
-                            else
-                                statusLabel.Text = "Save succeeded";
-                        }
+                        statusLabel.Text = "SavePhotoAsync return false";
+                    }
+                    else
+                    {
+                        statusLabel.Text = "Success!";
                     }
                 }
             }
         }
-
+            
         void OnFormatPickerChanged(object sender, EventArgs e)
         {
+
             if (formatPicker.SelectedIndex != -1)
             {
                 SKEncodedImageFormat imageFormat = (SKEncodedImageFormat)formatPicker.SelectedItem;
                 fileNameEntry.Text = Path.ChangeExtension(fileNameEntry.Text, imageFormat.ToString().ToLower());
             }
+
         }
 
     }

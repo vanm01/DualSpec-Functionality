@@ -13,8 +13,7 @@ namespace DualSpec.Views
     {
 
         SKImage capturedImage;
-        SKImage duplicate;
-        SKPixmap capturedImagePixmap;
+        SKBitmap capturedBitmap;
         Stream stream;
 
         public CameraPage()
@@ -24,7 +23,7 @@ namespace DualSpec.Views
 
         async void SaveImage_Clicked(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new SavePhotoPage(duplicate)));
+            await Navigation.PushModalAsync(new NavigationPage(new SavePhotoPage(capturedImage)));
         }
 
         async void OpenCamera_Clicked(System.Object sender, System.EventArgs e)
@@ -38,8 +37,6 @@ namespace DualSpec.Views
                 stream = await result.OpenReadAsync();
 
                 capturedImage = SKImage.FromEncodedData(stream);
-
-                duplicate = capturedImage;
 
             }
             canvasView.InvalidateSurface();

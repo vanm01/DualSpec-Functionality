@@ -73,6 +73,7 @@ namespace DualSpec.iOS
             {
                 NSData nsData = NSData.FromArray(data);
                 UIImage image = new UIImage(nsData);
+
                 TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
 
                 image.SaveToPhotosAlbum((UIImage img, NSError error) =>
