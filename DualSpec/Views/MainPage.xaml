@@ -3,7 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DualSpec.Views"
-    x:Class="DualSpec.Views.MainPage">
+    x:Class="DualSpec.Views.MainPage"
+    Title="Main Menu">
 
     <TableView>
 
@@ -16,10 +17,13 @@
                           Command="{Binding NavigateCommand}"
                           CommandParameter="{x:Type local:CameraPage}"/>
 
-                <TextCell Text="Spectra Isolation Page"
+                <TextCell Text="Spectra Isolation"
                           Detail="Allows for the isolation of spectra using touch inputs"
                           Command="{Binding NavigateCommand}"
                           CommandParameter="{x:Type local:SpecIsolationPage}"/>
+
+                <TextCell Text="Intensity Reading"
+                          Detail="Allows for the loading of and image and getting intensity readings at desired pixel"/>
 
 
             </TableSection>
