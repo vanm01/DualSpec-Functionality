@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using SkiaSharp;
 using Xamarin.Forms;
-using DualSpec.Services;
 using System.IO;
 
 namespace DualSpec.Views

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
-using DualSpec.Services;
 using DualSpec.iOS;
 
 [assembly: Dependency(typeof(PhotoPickerService))]

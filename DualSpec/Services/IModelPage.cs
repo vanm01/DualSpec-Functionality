@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace DualSpec.Views
+namespace DualSpec
 {
     public interface IModelPage
     {

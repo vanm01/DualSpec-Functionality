@@ -74,6 +74,8 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PhotoPickerService.cs" />
+    <Compile Include="TouchEffect.cs" />
+    <Compile Include="TouchRecognizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
