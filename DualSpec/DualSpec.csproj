@@ -32,15 +32,11 @@
     <None Remove="Services\" />
     <None Remove="ImageExtensions\" />
     <None Remove="TouchTracking\" />
-    <None Remove="Gray.JPG" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="Services\" />
     <Folder Include="ImageExtensions\" />
     <Folder Include="TouchTracking\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Gray.JPG" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,9 @@
                           CommandParameter="{x:Type local:SpecIsolationPage}"/>
 
                 <TextCell Text="Intensity Reading"
-                          Detail="Allows for the loading of and image and getting intensity readings at desired pixel"/>
+                          Detail="Allows for the loading of and image and getting intensity readings at desired pixel"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:IntensityReadingPage}"/>
 
 
             </TableSection>
