@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:skiaforms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:tt="clr-namespace:TouchTracking"
+    x:Class="DualSpec.Views.SpecIsolationPage"
+    Title="Spectra Isolation Page">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Name ="Load Image"
+                     Clicked="LoadImage_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto" />
+                
+            </Grid.RowDefinitions>
+
+            <Grid Background="BLACK" Grid.Row="1">
+
+                <skiaforms:SKCanvasView x:Name="canvasView"
+                                        HeightRequest="600"
+                                        VerticalOptions="Center"
+                                        PaintSurface="OnCanvasViewPaintSurface"/>
+
+                <Grid.Effects>
+                    <tt:TouchEffect Capture="True"
+                                    TouchAction="OnTouchEffectAction"/>
+                </Grid.Effects>
+
+            </Grid>
+
+            <Label x:Name="CoordinateLabel" Text="Rectangle Coordinates" Grid.Row="2"/>
+
+
+            <!--<Picker x:Name="picker"
+                Title="Select number of visible spectra in image"
+                SelectedIndexChanged="picker_SelectedIndexChanged"
+                IsEnabled="False"
+                Grid.Row="3">
+
+            <Picker.ItemsSource>
+
+                <x:Array Type="{x:Type x:Int16}">
+
+                    <x:Int16> 1 </x:Int16>
+                    <x:Int16> 2 </x:Int16>
+
+                </x:Array>
+
+            </Picker.ItemsSource>
+
+        </Picker>-->
+
+        </Grid>
+
+        
+
+        
+
+</ContentPage>
