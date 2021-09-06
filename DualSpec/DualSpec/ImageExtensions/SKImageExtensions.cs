@@ -16,7 +16,7 @@ namespace DualSpec
 
         }
 
-        public static unsafe void IntensityAtPixel(this SKImage processImage, int pixelCoordinates, int leftBoundary, int rightBoundry)
+        public static unsafe double IntensityAtPixel(this SKImage processImage, int pixelCoordinates, int leftBoundary, int rightBoundry)
         {
 
             SKPixmap pixmap = processImage.PeekPixels();
@@ -24,6 +24,8 @@ namespace DualSpec
             int width = processImage.Width;
             int height = processImage.Height;
             byte* tempPtr;
+
+            double average = 0;
 
             for (int row = 0; row < height; row++)
             {
@@ -53,7 +55,7 @@ namespace DualSpec
 
                 if(row == pixelCoordinates)
                 {
-                    double average = 0;
+                    average = 0;
 
                     for(int i = 0; i < intensityList.Count; i++)
                     {
@@ -61,11 +63,11 @@ namespace DualSpec
                     }
 
                     average = average / (intensityList.Count);
-
-                    Console.WriteLine(average);
                 }
 
             }
+
+            return average;
 
         }
         

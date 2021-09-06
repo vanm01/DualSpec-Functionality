@@ -15,6 +15,25 @@
 
     <StackLayout>
 
+        <Grid x:Name="grid">
+
+            <Entry x:Name="leftBound"
+               Placeholder="Left bound"
+               HorizontalOptions="Start"
+                   Grid.Row="1"/>
+        <Entry x:Name="rightBound"
+               Placeholder="Right bound"
+               HorizontalOptions="End"
+               Grid.Row="1"/>
+        <Entry x:Name="desiredCoordinates"
+               Placeholder="verticle pixel number"
+               Grid.Row="2"/>
+        <Label x:Name="intensity"
+               Text="Intensity Value"
+               Grid.Row="3"/>
+
+        </Grid>
+
         <skiaforms:SKCanvasView x:Name="canvasView"
                                 PaintSurface="canvasView_PaintSurface"
                                 VerticalOptions="FillAndExpand"

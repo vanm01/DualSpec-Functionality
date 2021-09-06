@@ -57,8 +57,8 @@ namespace DualSpec.Views
 
         void Process_Clicked(System.Object sender, System.EventArgs e)
         {
+            intensity.Text = image.IntensityAtPixel(Int32.Parse(desiredCoordinates.Text), Int32.Parse(leftBound.Text), Int32.Parse(rightBound.Text)).ToString();
 
-            image.IntensityAtPixel(2000, 1200, 1400);
 
         }
     }
